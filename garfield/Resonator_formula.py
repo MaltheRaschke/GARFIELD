@@ -522,7 +522,7 @@ def Resonator_longitudinal_wake_potential(times, sigma, Rs, Q, resonant_frequenc
     cstcos = Rs * omegar / (2 * Q)
 
     if use_mpmath:
-        from mpmath import erfc, exp, matrix, re, im
+        from mpmath import erfc, exp, matrix, re, im # type: ignore
         cst = exp((alphar**2 - kr**2) * sigma**2 / 2)
         times_mp = matrix(times)
         erfc_arg = -(times_mp - alphar * sigma**2 + 1j * kr * sigma**2) / (np.sqrt(2) * sigma)
@@ -571,7 +571,7 @@ def Resonator_transverse_wake_potential(times, sigma, Rs, Q, resonant_frequency,
     alphar = omegar / (2 * Q)
 
     if use_mpmath:
-        from mpmath import erfc, exp, matrix, re, im
+        from mpmath import erfc, exp, matrix, re, im # type: ignore
         times_mp = matrix(times)
         cst = Rs * omegar**2 / (2 * Q * kr) * exp((alphar**2 - kr**2) * sigma**2 / 2)
         erfc_arg = -(times_mp - alphar * sigma**2 + 1j * kr * sigma**2) / (np.sqrt(2) * sigma)
